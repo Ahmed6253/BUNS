@@ -1,0 +1,71 @@
+/*
+The CSS export should solely be used as a reference.
+For a more detailed animation export the JSON file should be used.
+*/
+#Vector {
+  transform: translateX(-50%) translateY(-50%) scaleX(var(--fgmtn-scale-x))
+    scaleY(var(--fgmtn-scale-y)) rotate(var(--fgmtn-rotation));
+  animation: Vector__y__1 0ms 0ms linear forwards,
+    Vector__y__2 4003ms 0ms ease-in-out forwards;
+}
+
+@keyframes Vector__y__1 {
+  from {
+    top: -100px;
+  }
+
+  to {
+    top: -827.1308px;
+  }
+}
+@keyframes Vector__y__2 {
+  from {
+    top: -827.1308px;
+  }
+
+  to {
+    top: 90px;
+  }
+}
+
+#bitmap2_1 {
+  transform: translateX(-50%) translateY(-50%) scaleX(var(--fgmtn-scale-x))
+    scaleY(var(--fgmtn-scale-y)) rotate(var(--fgmtn-rotation));
+  animation: bitmap2_1__y__1 5000ms 0ms ease-in-out forwards;
+}
+
+@keyframes bitmap2_1__y__1 {
+  from {
+    top: -300px;
+  }
+
+  to {
+    top: 0px;
+  }
+}
+
+#image0_5_2 {
+  transform: translateX(-50%) translateY(-50%) scaleX(var(--fgmtn-scale-x))
+    scaleY(var(--fgmtn-scale-y)) rotate(var(--fgmtn-rotation));
+  animation: packi_1__x__1 0ms 0ms linear forwards,
+    packi_1__x__2 2503ms 0ms ease-out forwards;
+}
+
+@keyframes packi_1__x__1 {
+  from {
+    left: -100px;
+  }
+
+  to {
+    left: 1482px;
+  }
+}
+@keyframes packi_1__x__2 {
+  from {
+    left: 1482px;
+  }
+
+  to {
+    left: 950px;
+  }
+}
