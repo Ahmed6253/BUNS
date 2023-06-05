@@ -4,6 +4,7 @@ const logocont = document.querySelector('.bunslogo');
 const home2 = document.querySelector('.home2');
 const contmenu = document.querySelector('.contMenu');
 const slide = document.querySelector('.slide');
+const loading = document.querySelector('.loading-screen');
 setTimeout(() => {
   home.style.display = 'flex';
   home.style.margin = '30px auto';
@@ -381,6 +382,8 @@ btnOffers.addEventListener('click', function (e) {
 let curbanner = 0;
 btnNext.addEventListener('click', function () {
   curbanner > 0 && offerslider.lastChild.remove();
+  slide.appendChild(loading);
+  loading.style.display = 'flex';
   if (curbanner !== 3) {
     curbanner++;
     slide.firstElementChild.src = `imgs/banner${curbanner}.gif`;
@@ -393,6 +396,8 @@ btnNext.addEventListener('click', function () {
 });
 btnBack.addEventListener('click', function () {
   curbanner > 0 && offerslider.lastChild.remove();
+  slide.appendChild(loading);
+  loading.style.display = 'flex';
   if (curbanner !== 0 && curbanner !== 1) {
     curbanner--;
     slide.firstElementChild.src = `imgs/banner${curbanner}.gif`;
@@ -403,11 +408,12 @@ btnBack.addEventListener('click', function () {
     offerslider.appendChild(offerAddBtns[curbanner - 1]);
   }
 });
+slide.firstElementChild.onload = (e) => loading.remove();
 
 btnAppetizers.addEventListener('click', function (e) {
   e.preventDefault();
   home2.innerHTML = '';
-  offersCont.innerHTML = '';
+  offerslider.innerHTML = '';
   slide.firstElementChild.src = 'imgs/banner0.gif';
   home2.appendChild(slide);
   home2.appendChild(menubtns);
@@ -420,7 +426,7 @@ btnAppetizers.addEventListener('click', function (e) {
 btnSandwiches.addEventListener('click', function (e) {
   e.preventDefault();
   home2.innerHTML = '';
-  offersCont.innerHTML = '';
+  offerslider.innerHTML = '';
   slide.firstElementChild.src = 'imgs/banner0.gif';
   home2.appendChild(slide);
   home2.appendChild(menubtns);
@@ -434,7 +440,7 @@ btnSandwiches.addEventListener('click', function (e) {
 btnSauces.addEventListener('click', function (e) {
   e.preventDefault();
   home2.innerHTML = '';
-  offersCont.innerHTML = '';
+  offerslider.innerHTML = '';
   slide.firstElementChild.src = 'imgs/banner0.gif';
   home2.appendChild(slide);
   home2.appendChild(menubtns);
@@ -448,7 +454,7 @@ btnSauces.addEventListener('click', function (e) {
 btnDessert.addEventListener('click', function (e) {
   e.preventDefault();
   home2.innerHTML = '';
-  offersCont.innerHTML = '';
+  offerslider.innerHTML = '';
   slide.firstElementChild.src = 'imgs/banner0.gif';
   home2.appendChild(slide);
   home2.appendChild(menubtns);
@@ -547,10 +553,10 @@ invalid.innerHTML = 'Invalid entries, please try again';
 const fincont = document.createElement('form');
 fincont.className = 'fincont';
 fincont.innerHTML = `
-<label for="name">Name<input type="text" id='name' /></label>
-<label for="full-address">Full Address<input type="text" id="full-address" /></label>
-<label for="phone-number">Phone Number<input type="number" id="phone-number" /></label>
-<label for="cash"
+    <label for="name">Name<input type="text" id='name' /></label>
+    <label for="full-address">Full Address<input type="text" id="full-address" /></label>
+    <label for="phone-number">Phone Number<input type="number" id="phone-number" /></label>
+    <label for="cash"
 ><input type="checkbox" id ="cash" name = "cash" value = "cash"
 /><i class="fa-solid fa-wallet"></i>Cash On Delivery</label>
 <label for="credit"
@@ -584,9 +590,9 @@ submit.addEventListener('click', function (e) {
   if (fincont.checkValidity()) {
     home2.innerHTML = '';
     home.innerHTML = ` <div class="container">
-  <div class="done">
-  <i class="fa-solid fa-hourglass-start fa-bounce"></i>
-  <p>Your Order Will Be Ready Soon</p>
+    <div class="done">
+    <i class="fa-solid fa-hourglass-start fa-bounce"></i>
+    <p>Your Order Will Be Ready Soon</p>
   </div>
   </div>`;
   } else {
