@@ -250,6 +250,7 @@ header .container {
 }
 
 .contMenu.Offers {
+  padding: 5px;
   max-width: 770px;
   flex-wrap: nowrap;
 }
@@ -264,13 +265,13 @@ header .container {
 }
 
 .btnadd.addmeal {
-  margin-top: 20px;
+  margin-top: 15px;
   display: flex;
-  width: 160px;
+  width: 180px;
 }
 
 .btnadd.addmeal s {
-  color: #f5deb3;
+  color: #d25244;
 }
 
 .card {
