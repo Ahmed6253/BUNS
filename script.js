@@ -380,7 +380,7 @@ btnOffers.addEventListener('click', function (e) {
 
   step = setTimeout(() => {
     btnNext.click();
-  }, 2000);
+  }, 500);
   return step;
 });
 
