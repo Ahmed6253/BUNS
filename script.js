@@ -356,13 +356,13 @@ orderNow.addEventListener('click', function (e) {
   document.querySelector('.logo').style.width = '120px';
   home2.appendChild(menubtns);
   home2.appendChild(SandwichesCont);
-
   document
     .querySelectorAll('.btn')
     .forEach((e) => e.classList.remove('active'));
   btnSandwiches.classList.add('active');
 });
 
+let step;
 btnOffers.addEventListener('click', function (e) {
   e.preventDefault();
   curbanner = 0;
@@ -377,12 +377,17 @@ btnOffers.addEventListener('click', function (e) {
     .querySelectorAll('.btn')
     .forEach((e) => e.classList.remove('active'));
   btnOffers.classList.add('active');
+
+  step = setTimeout(() => {
+    btnNext.click();
+  }, 2000);
+  return step;
 });
 
 let curbanner = 0;
+
 btnNext.addEventListener('click', function () {
   curbanner > 0 && offerslider.lastChild.remove();
-  slide.appendChild(loading);
   loading.style.display = 'flex';
   if (curbanner !== 3) {
     curbanner++;
@@ -393,10 +398,11 @@ btnNext.addEventListener('click', function () {
     slide.firstElementChild.src = `imgs/banner${curbanner}.gif`;
     offerslider.appendChild(offerAddBtns[curbanner - 1]);
   }
+  slide.appendChild(loading);
 });
+
 btnBack.addEventListener('click', function () {
   curbanner > 0 && offerslider.lastChild.remove();
-  slide.appendChild(loading);
   loading.style.display = 'flex';
   if (curbanner !== 0 && curbanner !== 1) {
     curbanner--;
@@ -407,11 +413,14 @@ btnBack.addEventListener('click', function () {
     slide.firstElementChild.src = `imgs/banner${curbanner}.gif`;
     offerslider.appendChild(offerAddBtns[curbanner - 1]);
   }
+  slide.appendChild(loading);
 });
-slide.firstElementChild.onload = (e) => loading.remove();
+
+slide.firstElementChild.onload = () => loading.remove();
 
 btnAppetizers.addEventListener('click', function (e) {
   e.preventDefault();
+  clearTimeout(step);
   home2.innerHTML = '';
   offerslider.innerHTML = '';
   slide.firstElementChild.src = 'imgs/banner0.gif';
@@ -425,6 +434,7 @@ btnAppetizers.addEventListener('click', function (e) {
 });
 btnSandwiches.addEventListener('click', function (e) {
   e.preventDefault();
+  clearTimeout(step);
   home2.innerHTML = '';
   offerslider.innerHTML = '';
   slide.firstElementChild.src = 'imgs/banner0.gif';
@@ -439,6 +449,7 @@ btnSandwiches.addEventListener('click', function (e) {
 });
 btnSauces.addEventListener('click', function (e) {
   e.preventDefault();
+  clearTimeout(step);
   home2.innerHTML = '';
   offerslider.innerHTML = '';
   slide.firstElementChild.src = 'imgs/banner0.gif';
@@ -453,6 +464,7 @@ btnSauces.addEventListener('click', function (e) {
 });
 btnDessert.addEventListener('click', function (e) {
   e.preventDefault();
+  clearTimeout(step);
   home2.innerHTML = '';
   offerslider.innerHTML = '';
   slide.firstElementChild.src = 'imgs/banner0.gif';
@@ -501,7 +513,7 @@ offerAddBtns.forEach((e) =>
     cartBtn.style.fontSize = '35px';
     setTimeout(() => {
       e.style.backgroundColor = '#954f35';
-      e.style.width = '160px';
+      e.style.width = '180px';
       cartBtn.style.fontSize = '30px';
     }, 200);
 
@@ -584,7 +596,7 @@ fincont.lastElementChild.addEventListener('click', function (e) {
   fincont.appendChild(submit);
 });
 
-submit.addEventListener('click', function (e) {
+submit.addEventListener('click', function () {
   document.querySelectorAll('input').forEach((e) => e.attributes['required']);
 
   if (fincont.checkValidity()) {
